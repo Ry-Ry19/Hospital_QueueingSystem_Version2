@@ -1,4 +1,3 @@
-import React from 'react';
 import { Link } from 'react-router-dom';
 
 // ProjectList receives projects and an onChangeStatus callback from the parent (App)
@@ -7,12 +6,14 @@ const ProjectList = ({ projects, onChangeStatus }) => {
     <div style={styles.container}>
       <h2>Projects</h2>
       <ul style={styles.list}>
-        {projects.map(({ id, title, status }) => (
+        {projects.map(({ id, title, status, description }) => (
           <li key={id} style={styles.item}>
             <div style={styles.itemHeader}>
               <Link to={`/project/${id}`} style={styles.title}>{title}</Link>
               <span style={styles.badge}>{status}</span>
             </div>
+            {/* Show description below the title */}
+            <p style={styles.description}>{description}</p>
             <button
               style={styles.button}
               onClick={() => onChangeStatus(id)}
@@ -34,6 +35,7 @@ const styles = {
   title: { fontWeight: 'bold', textDecoration: 'none', color: '#0a6' },
   badge: { background: '#eef', padding: '2px 8px', borderRadius: 12, fontSize: 12 },
   button: { marginTop: 8, padding: '6px 10px', cursor: 'pointer' },
+  description: { marginTop: 4, fontSize: 14, color: '#555' },
 };
 
 export default ProjectList;

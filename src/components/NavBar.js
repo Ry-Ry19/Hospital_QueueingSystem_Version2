@@ -1,4 +1,3 @@
-import React from 'react';
 import { Link } from 'react-router-dom';
 
 // Simple navigation bar using Link to ensure SPA navigation

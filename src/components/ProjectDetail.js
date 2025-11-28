@@ -1,5 +1,4 @@
-import React from 'react';
-import { useParams, Link } from 'react-router-dom';
+import { Link, useParams } from 'react-router-dom';
 
 // ProjectDetail reads id from the URL and finds the project passed from parent via props
 const ProjectDetail = ({ projects }) => {
@@ -21,15 +20,20 @@ const ProjectDetail = ({ projects }) => {
   return (
     <div style={styles.container}>
       <h2>{title}</h2>
-      <p><strong>Status:</strong> {status}</p>
-      {description && <p>{description}</p>}
+      <p>
+        <strong>Status:</strong> 
+        <span style={{ background: '#eef', padding: '2px 8px', borderRadius: 12, marginLeft: 6 }}>
+          {status}
+        </span>
+      </p>
+      {description && <p><strong>Description:</strong> {description}</p>}
       <Link to="/" style={styles.back}>Back to Projects</Link>
     </div>
   );
 };
 
 const styles = {
-  container: { padding: 16 },
+  container: { padding: 16, display: 'flex', flexDirection: 'column', gap: 12 },
   back: { color: '#0a6', textDecoration: 'none' },
 };
 

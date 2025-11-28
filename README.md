@@ -1,65 +1,116 @@
-Hospital Queueing System (SPA) – Lab 6
-This React app demonstrates a stateful Single-Page Application (SPA) using:
+# Hospital Queueing System (SPA) – Lab Activity 6
 
-useState for parent-owned state
-Props and callback props for unidirectional data flow
-Client-side routing with react-router-dom v6
-Navigation via Link for smooth transitions without page refresh
-How this meets Lab 6 requirements
+This React project demonstrates a stateful Single-Page Application (SPA) that applies component interaction, state management, and client-side routing using React Router.
 
-State (useState): App.js owns an array of mock project logs [{ id, title, status }].
-Props: App passes the projects array to ProjectList and to ProjectDetail.
-Callback prop: App passes a toggleStatus function to ProjectList; the child calls it to update parent state.
-Routing: BrowserRouter, Routes, and Route configured for:
-“/” -> ProjectList (List View)
-“/project/:id” -> ProjectDetail (Detail View)
-Navigation: All internal navigation uses Link.
-Components: At least four functional components: App, NavBar, ProjectList, ProjectDetail.
-Data flow: Unidirectional. Parent owns state; children display data or invoke a parent callback.
-Interactivity: Clicking links changes the URL and view with no full refresh; clicking “Change Status” updates the list immediately.
-Project structure (key files)
+---
 
-src/index.js: Wraps App with BrowserRouter.
-src/App.js: Owns state, defines routes, passes props and callback.
-src/components/NavBar.js: Contains Link-based navigation.
-src/components/ProjectList.js: Renders list via .map(), includes “Change Status” and detail Links.
-src/components/ProjectDetail.js: Reads :id via useParams and shows details.
-Prerequisites
+## Purpose of the Application
+This application was developed to fulfill the requirements for Lab Activity 6 by demonstrating the use of React state, props, and routing inside a working SPA environment.
 
-Node.js 16+ recommended
-npm 8+ or yarn
-Setup
+---
 
-Install dependencies:
+## Features and Technologies Used
+
+The application uses the following concepts and tools:
+
+- React with Functional Components
+- `useState` Hook for state management
+- Props and callback props for parent-to-child and child-to-parent communication
+- React Router v6 for client-side routing
+- `<Link>` for navigation without browser refresh
+
+---
+
+## How the System Works
+
+### State Management
+The main component (`App.js`) holds an array of mock project records using the `useState` hook. Each project includes an `id`, `title`, `status`, and `description`.
+
+### Props and Callback Functions
+The project list is passed from the parent component to child components using props. A callback function is also passed to allow child components to update the state owned by the parent.
+
+### Routing and Navigation
+The project uses React Router with the following routes:
+
+| Route | View |
+|--------|------|
+| `/` | Project List |
+| `/project/:id` | Project Details |
+
+Navigation between pages uses the `<Link>` component, allowing smooth transitions without refreshing the browser.
+
+### Components
+This project contains the required functional components:
+- App
+- NavBar
+- ProjectList
+- ProjectDetail
+
+### Data Flow
+All data follows unidirectional flow: the parent manages state, and child components only display data or request updates using callback props.
+
+### Interactivity
+Users can:
+- Click a project title to view details
+- Click "Back to Projects" to return
+- Click "Change Status" to update a project state instantly
+
+---
+
+## Key Files Structure
+src/
+├── index.js
+├── App.js
+├── components/
+│ ├── NavBar.js
+│ ├── ProjectList.js
+│ ├── ProjectDetail.js
+
+
+
+---
+
+## Setup Instructions
+
+### Requirements
+- Node.js 16 or higher
+- npm 8+ (or yarn)
+
+### Installation
 npm install
-Install React Router (if not already installed):
+
+
+### Install React Router (if not installed)
 npm install react-router-dom@6
-Start the dev server:
+
+
+### Run Project
 npm start
-Open the app:
+
+
+### Access in Browser
 http://localhost:3000
-Usage walkthrough
 
-Click “Projects” in the NavBar to view the list (at “/”).
-Click any project title to navigate to its detail view (at “/project/:id”).
-Click “Back to list” on the detail view to return to the list.
-In the list, click “Change Status” to toggle a project’s status (e.g., done/pending). The list updates immediately.
-Key implementation notes
 
-useState is called at the top level of App (no conditional hooks).
-Props are destructured in child components, e.g., const ProjectList = ({ projects, onToggleStatus }) => { … }.
-The callback prop does not mutate state directly in the child; it calls the parent function to update via setState.
-Routes are declared with react-router-dom v6 (Routes/Route), not the legacy Switch component.
-Troubleshooting
+---
 
-If navigation triggers a full page reload, verify:
-You are using Link from react-router-dom instead of anchor tags.
-App is wrapped in BrowserRouter (in src/index.js).
-If the detail page shows “Project not found,” verify the :id is parsed as a string and compare loosely (String(p.id) === String(id)).
-If clicking “Change Status” does nothing, ensure onToggleStatus is passed from App and wired to the button’s onClick.
-Optional enhancements
+## Troubleshooting
 
-Add filtering or sorting in ProjectList.
-Add more project fields (e.g., owner, createdAt).
-Persist state with localStorage.
-Add tests for routing and state updates.
+- If navigation refreshes the page, check that `<Link>` is used instead of `<a>` tags.
+- If the detail view shows "Project not found", verify the ID comparison logic.
+- If clicking "Change Status" does not work, ensure the callback function is correctly passed and invoked.
+
+---
+
+## Notes
+
+- `useState` is called only at the top level of the parent component.
+- Props use destructuring for readability.
+- Routing uses React Router v6 syntax (`Routes` and `Route`).
+- State is updated only in the parent component.
+
+---
+
+## Author
+CCC151_RECOSOSA  
+Lab Activity 6 – Component State, Data Flow, and Routing
