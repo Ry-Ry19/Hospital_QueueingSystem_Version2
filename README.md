@@ -1,70 +1,65 @@
-# Getting Started with Create React App
+Hospital Queueing System (SPA) – Lab 6
+This React app demonstrates a stateful Single-Page Application (SPA) using:
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+useState for parent-owned state
+Props and callback props for unidirectional data flow
+Client-side routing with react-router-dom v6
+Navigation via Link for smooth transitions without page refresh
+How this meets Lab 6 requirements
 
-## Available Scripts
+State (useState): App.js owns an array of mock project logs [{ id, title, status }].
+Props: App passes the projects array to ProjectList and to ProjectDetail.
+Callback prop: App passes a toggleStatus function to ProjectList; the child calls it to update parent state.
+Routing: BrowserRouter, Routes, and Route configured for:
+“/” -> ProjectList (List View)
+“/project/:id” -> ProjectDetail (Detail View)
+Navigation: All internal navigation uses Link.
+Components: At least four functional components: App, NavBar, ProjectList, ProjectDetail.
+Data flow: Unidirectional. Parent owns state; children display data or invoke a parent callback.
+Interactivity: Clicking links changes the URL and view with no full refresh; clicking “Change Status” updates the list immediately.
+Project structure (key files)
 
-In the project directory, you can run:
+src/index.js: Wraps App with BrowserRouter.
+src/App.js: Owns state, defines routes, passes props and callback.
+src/components/NavBar.js: Contains Link-based navigation.
+src/components/ProjectList.js: Renders list via .map(), includes “Change Status” and detail Links.
+src/components/ProjectDetail.js: Reads :id via useParams and shows details.
+Prerequisites
 
-### `npm start`
+Node.js 16+ recommended
+npm 8+ or yarn
+Setup
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+Install dependencies:
+npm install
+Install React Router (if not already installed):
+npm install react-router-dom@6
+Start the dev server:
+npm start
+Open the app:
+http://localhost:3000
+Usage walkthrough
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+Click “Projects” in the NavBar to view the list (at “/”).
+Click any project title to navigate to its detail view (at “/project/:id”).
+Click “Back to list” on the detail view to return to the list.
+In the list, click “Change Status” to toggle a project’s status (e.g., done/pending). The list updates immediately.
+Key implementation notes
 
-### `npm test`
+useState is called at the top level of App (no conditional hooks).
+Props are destructured in child components, e.g., const ProjectList = ({ projects, onToggleStatus }) => { … }.
+The callback prop does not mutate state directly in the child; it calls the parent function to update via setState.
+Routes are declared with react-router-dom v6 (Routes/Route), not the legacy Switch component.
+Troubleshooting
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+If navigation triggers a full page reload, verify:
+You are using Link from react-router-dom instead of anchor tags.
+App is wrapped in BrowserRouter (in src/index.js).
+If the detail page shows “Project not found,” verify the :id is parsed as a string and compare loosely (String(p.id) === String(id)).
+If clicking “Change Status” does nothing, ensure onToggleStatus is passed from App and wired to the button’s onClick.
+Optional enhancements
 
-### `npm run build`
-
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
-
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
-
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
-
-### `npm run eject`
-
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
-
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
-
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+Add filtering or sorting in ProjectList.
+Add more project fields (e.g., owner, createdAt).
+Persist state with localStorage.
+Add tests for routing and state updates.
