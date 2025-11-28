@@ -1,0 +1,51 @@
+Project tree for react-hospital-app/
+
+Top-level files:
+- package.json
+- package-lock.json
+- README.md
+- .gitignore
+
+public/
+  - index.html
+  - manifest.json
+  - robots.txt
+  - favicon.ico
+  - logo192.png
+  - logo512.png
+  images/
+    - bg.jpg
+    - cityhospital.jpg
+    - med.png
+    - me.jpg
+    - luffy3.jpg
+    - Meme.jpg
+    - luffy1.jpg
+    - luffy.jpg
+    - vidbg-final.mp4
+    - vid-bg.mp4
+    - vidground.mp4
+    - DocBg.mp4
+    - iit.png
+
+src/
+  - index.js
+  - index.css
+  - App.js
+  - App.css
+  - App.test.js
+  - reportWebVitals.js
+  - setupTests.js
+  - logo.svg
+  components/
+    - Header.js
+    - Footer.js
+    - EmergencyServices.js
+    - ServiceCard.js
+    - ServicesGrid.js
+  pages/
+    - Home.js
+    - About.js
+    - Services.js
+    - Contact.js
+    - Appointment.js

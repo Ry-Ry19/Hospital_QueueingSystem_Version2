@@ -1,0 +1,848 @@
+:root {
+  --primary: #2a5ea7;
+  --secondary: #e63946;
+  --accent: #f4a261;
+  --light: #f1faee;
+  --dark: #1d3557;
+  --success: #2a9d8f;
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  font-family: 'Poppins', 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap');
+
+html, body {
+  margin: 0;
+  padding: 0;
+  width: 100%;
+  overflow-x: hidden;
+  scroll-behavior: smooth;
+}
+
+body {
+  min-height: 100vh;
+  overflow-x: hidden;
+}
+
+/* Video Background */
+.video-background {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  z-index: -1;
+  overflow: hidden;
+}
+
+.video-background video {
+  min-width: 100%;
+  min-height: 100%;
+  object-fit: cover;
+  filter: brightness(0.7);
+}
+
+
+
+/* Footer */
+
+/* ========== THEME TOGGLE BUTTON STYLES ========== */
+.theme-switcher {
+    margin-left: 2rem;
+}
+
+.theme-toggle {
+    background: rgba(255, 255, 255, 0.1);
+    border: 2px solid rgba(255, 255, 255, 0.3);
+    color: white;
+    padding: 0.5rem 1rem;
+    border-radius: 25px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    transition: all 0.3s ease;
+    font-size: 0.9rem;
+    font-weight: 500;
+}
+
+.theme-toggle:hover {
+    background: rgba(255, 255, 255, 0.2);
+    transform: translateY(-2px);
+}
+
+/* Theme toggle states */
+[data-theme="dark"] .theme-toggle .fa-moon {
+    display: none;
+}
+
+[data-theme="dark"] .theme-toggle .fa-sun {
+    display: inline;
+    color: #f4a261;
+}
+
+.theme-toggle .fa-sun {
+    display: none;
+}
+
+[data-theme="light"] .theme-toggle .fa-moon {
+    color: #a8dadc;
+}
+
+/* ========== ADDITIONAL DARK THEME STYLES ========== */
+
+/* Form elements */
+[data-theme="dark"] .form-control {
+    background-color: var(--dark-card);
+    border: 1px solid var(--dark-border);
+    color: var(--dark-text);
+}
+
+[data-theme="dark"] .form-control:focus {
+    background-color: var(--dark-card);
+    border-color: var(--primary);
+    color: var(--dark-text);
+    box-shadow: 0 0 0 3px rgba(42, 94, 167, 0.3);
+}
+
+[data-theme="dark"] .form-control::placeholder {
+    color: var(--dark-text-secondary);
+}
+
+/* Buttons - ensure they work in dark mode */
+[data-theme="dark"] .btn-submit {
+    background-color: var(--primary);
+    color: white;
+}
+
+[data-theme="dark"] .btn-submit:hover {
+    background-color: #1d4b8f;
+}
+
+[data-theme="dark"] .action-btn {
+    background-color: var(--primary);
+    color: white;
+}
+
+[data-theme="dark"] .action-btn:hover {
+    background-color: #1d4b8f;
+}
+
+[data-theme="dark"] .ai-symptom-checker {
+    background-color: var(--accent);
+    color: var(--dark);
+}
+
+[data-theme="dark"] .ai-symptom-checker:hover {
+    background-color: transparent;
+    border: 2px solid var(--accent);
+    color: var(--accent);
+}
+
+/* Ensure all text is properly colored in dark mode */
+[data-theme="dark"] .appointment-hero p:last-child {
+    color: var(--dark-text-secondary);
+}
+
+/* Priority level border colors in dark mode */
+[data-theme="dark"] .priority-level.critical {
+    border-top: 4px solid var(--secondary);
+}
+
+[data-theme="dark"] .priority-level.high {
+    border-top: 4px solid var(--accent);
+}
+
+[data-theme="dark"] .priority-level.medium {
+    border-top: 4px solid #f59e0b;
+}
+
+[data-theme="dark"] .priority-level.low {
+    border-top: 4px solid var(--success);
+}
+/* ========== APPOINTMENT-SPECIFIC DARK THEME STYLES ========== */
+
+/* Appointment Hero Section */
+[data-theme="dark"] .appointment-hero {
+    background: linear-gradient(135deg, #1e293b 0%, #0f172a 100%);
+}
+
+[data-theme="dark"] .appointment-hero h2 {
+    color: var(--dark-text);
+}
+
+[data-theme="dark"] .appointment-hero p {
+    color: var(--dark-text-secondary);
+}
+
+/* Appointment Form */
+[data-theme="dark"] .appointment-form {
+    background: linear-gradient(135deg, #334155, #1e293b);
+    border: 1px solid var(--dark-border);
+    box-shadow: 0 5px 20px var(--dark-shadow);
+}
+
+[data-theme="dark"] .form-header h3 {
+    color: var(--dark-text);
+}
+
+[data-theme="dark"] .form-header p {
+    color: var(--dark-text-secondary);
+}
+
+[data-theme="dark"] .form-group label {
+    color: var(--dark-text);
+}
+/* ========== SMOOTH THEME TRANSITIONS ========== */
+/* Add this section right after your existing dark theme styles */
+
+/* Smooth transitions for all theme-affected elements */
+* {
+    transition: background-color 0.3s ease, border-color 0.3s ease, color 0.3s ease, box-shadow 0.3s ease;
+}
+
+/* Optimize specific elements for theme switching */
+.appointment-form,
+.appointment-benefits,
+.priority-indicator,
+.patient-records,
+.form-control,
+.btn-submit,
+.action-btn,
+.ai-symptom-checker,
+.benefit-item,
+.priority-level,
+.records-table {
+    transition: all 0.3s ease;
+}
+
+/* Hardware acceleration for better performance */
+[data-theme="dark"] .appointment-form,
+[data-theme="dark"] .appointment-benefits,
+[data-theme="dark"] .priority-indicator,
+[data-theme="dark"] .patient-records,
+[data-theme="dark"] .records-table {
+    transform: translateZ(0);
+    will-change: background-color, border-color, box-shadow;
+}
+
+/* Exclude elements that shouldn't transition */
+.video-background,
+.video-background video,
+.logo-text h1,
+.notification {
+    transition: none !important;
+}
+
+/* Performance optimization for mobile */
+@media (prefers-reduced-motion: reduce) {
+    * {
+        transition: none !important;
+    }
+}
+
+/* Appointment Benefits */
+[data-theme="dark"] .appointment-benefits {
+    background: linear-gradient(135deg, #334155, #1e293b);
+    border: 1px solid var(--dark-border);
+    box-shadow: 0 5px 20px var(--dark-shadow);
+}
+
+[data-theme="dark"] .benefits-header h3 {
+    color: var(--dark-text);
+}
+
+[data-theme="dark"] .benefits-header p {
+    color: var(--dark-text-secondary);
+}
+
+[data-theme="dark"] .benefit-content h4 {
+    color: var(--dark-text);
+}
+
+[data-theme="dark"] .benefit-content p {
+    color: var(--dark-text-secondary);
+}
+
+[data-theme="dark"] .benefit-icon {
+    background-color: rgba(255, 255, 255, 0.1);
+    color: var(--accent);
+}
+
+/* AI Priority Indicator */
+[data-theme="dark"] .priority-indicator {
+    background: linear-gradient(135deg, #334155, #1e293b);
+    border: 2px dashed var(--dark-border);
+    box-shadow: 0 5px 20px var(--dark-shadow);
+}
+
+[data-theme="dark"] .priority-indicator h3 {
+    color: var(--dark-text);
+}
+
+[data-theme="dark"] .priority-indicator p {
+    color: var(--dark-text-secondary);
+}
+
+[data-theme="dark"] .priority-level {
+    background-color: var(--dark-card);
+    border: 1px solid var(--dark-border);
+    box-shadow: 0 3px 15px var(--dark-shadow);
+}
+
+[data-theme="dark"] .priority-level h4 {
+    color: var(--dark-text);
+}
+
+[data-theme="dark"] .priority-level p {
+    color: var(--dark-text-secondary);
+}
+
+/* Patient Records */
+[data-theme="dark"] .patient-records {
+    background: linear-gradient(135deg, #334155, #1e293b);
+    border: 1px solid var(--dark-border);
+    box-shadow: 0 5px 20px var(--dark-shadow);
+}
+
+[data-theme="dark"] .records-header h3 {
+    color: var(--dark-text);
+}
+
+[data-theme="dark"] .records-table {
+    background-color: var(--dark-card);
+    border: 1px solid var(--dark-border);
+}
+
+[data-theme="dark"] .records-table th {
+    background-color: var(--primary);
+    color: var(--dark-text);
+}
+
+[data-theme="dark"] .records-table td {
+    background-color: var(--dark-card);
+    color: var(--dark-text);
+    border-bottom: 1px solid var(--dark-border);
+}
+
+/* Keep priority indicators with their original colors for medical visibility */
+[data-theme="dark"] .priority-indicator-table.critical { 
+    background-color: #fee2e2; 
+    color: #dc2626; 
+}
+[data-theme="dark"] .priority-indicator-table.high { 
+    background-color: #ffedd5; 
+    color: #ea580c; 
+}
+[data-theme="dark"] .priority-indicator-table.medium { 
+    background-color: #fef9c3; 
+    color: #ca8a04; 
+}
+[data-theme="dark"] .priority-indicator-table.low { 
+    background-color: #dcfce7; 
+    color: #16a34a; 
+}
+
+[data-theme="dark"] .status-indicator {
+    background-color: #1e40af;
+    color: #dbeafe;
+}
+
+
+
+/* Mobile responsive for theme switcher */
+@media (max-width: 768px) {
+    .theme-switcher {
+        margin-left: 1rem;
+    }
+    
+    .theme-text {
+        display: none;
+    }
+    
+    .theme-toggle {
+        padding: 0.5rem;
+        width: 40px;
+        height: 40px;
+        border-radius: 50%;
+        justify-content: center;
+    }
+}
+
+.mobile-menu-btn {
+  display: none;
+  background: none;
+  border: none;
+  color: white;
+  font-size: 1.5rem;
+}
+
+/* Main Content */
+main {
+  padding-top: 80px;
+  min-height: 100vh;
+}
+
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 2rem;
+}
+
+/* Appointment Hero */
+.appointment-hero {
+  background: linear-gradient(135deg, var(--primary) 0%, var(--dark) 100%);
+  color: white;
+  padding: 4rem 2rem;
+  border-radius: 15px;
+  margin: 6rem auto;
+  text-align: center;
+  position: relative;
+  overflow: hidden;
+}
+
+.appointment-hero::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: url('../../public/images/med.png') center/cover;
+  opacity: 0.1;
+}
+
+.appointment-hero h2 {
+  font-size: 2.5rem;
+  margin-bottom: 1rem;
+  position: relative;
+}
+
+.appointment-hero p {
+  font-size: 1.1rem;
+  max-width: 700px;
+  margin: 0 auto 2rem;
+  position: relative;
+}
+
+.ai-symptom-checker {
+  display: inline-flex;
+  align-items: center;
+  background-color: var(--accent);
+  color: var(--dark);
+  padding: 0.8rem 1.5rem;
+  border-radius: 50px;
+  text-decoration: none;
+  font-weight: 600;
+  margin-top: 1rem;
+  transition: all 0.3s ease;
+  position: relative;
+  border: none;
+  cursor: pointer;
+  font-size: 1rem;
+}
+
+.ai-symptom-checker:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 5px 15px rgba(244, 162, 97, 0.4);
+}
+
+.ai-symptom-checker i {
+  margin-right: 8px;
+  font-size: 1.2rem;
+}
+
+/* Appointment Form Section */
+.appointment-section {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 2rem;
+  margin: 3rem 0;
+}
+
+.appointment-form {
+  background: linear-gradient(
+    135deg,
+    rgba(255, 182, 193, 0.8),
+    rgba(255, 240, 245, 0.9)
+  );
+  border-radius: 15px;
+  padding: 2rem;
+  box-shadow: 0 5px 20px rgba(0, 0, 0, 0.05);
+}
+
+.form-header {
+  margin-bottom: 2rem;
+  text-align: center;
+}
+
+.form-header h3 {
+  font-size: 1.8rem;
+  color: var(--dark);
+  margin-bottom: 0.5rem;
+}
+
+.form-header p {
+  color: #666;
+}
+
+.form-group {
+  margin-bottom: 1.5rem;
+}
+
+.form-group label {
+  display: block;
+  margin-bottom: 0.5rem;
+  font-weight: 500;
+  color: var(--dark);
+}
+
+.form-control {
+  width: 100%;
+  padding: 0.8rem 1rem;
+  border: 1px solid #ddd;
+  border-radius: 6px;
+  font-size: 1rem;
+  transition: all 0.3s ease;
+}
+
+.form-control:focus {
+  border-color: var(--primary);
+  box-shadow: 0 0 0 3px rgba(42, 94, 167, 0.2);
+  outline: none;
+}
+
+.form-row {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1rem;
+}
+
+.btn-submit {
+  background-color: var(--primary);
+  color: white;
+  border: none;
+  padding: 1rem 2rem;
+  border-radius: 6px;
+  font-size: 1rem;
+  font-weight: 600;
+  cursor: pointer;
+  width: 100%;
+  transition: all 0.3s ease;
+  margin-top: 1rem;
+}
+
+.btn-submit:hover {
+  background-color: #1d4b8f;
+  transform: translateY(-2px);
+}
+
+/* Appointment Benefits */
+.appointment-benefits {
+  background: linear-gradient(
+    135deg,
+    rgba(255, 182, 193, 0.8),
+    rgba(255, 240, 245, 0.9)
+  );
+  border-radius: 15px;
+  padding: 2rem;
+  box-shadow: 0 5px 20px rgba(0, 0, 0, 0.05);
+  align-self: center;
+}
+
+.benefits-header {
+  margin-bottom: 2rem;
+  text-align: center;
+}
+
+.benefits-header h3 {
+  font-size: 1.8rem;
+  color: var(--dark);
+  margin-bottom: 0.5rem;
+}
+
+.benefits-list {
+  list-style: none;
+}
+
+.benefit-item {
+  display: flex;
+  align-items: flex-start;
+  margin-bottom: 1.5rem;
+}
+
+.benefit-icon {
+  background-color: rgba(42, 94, 167, 0.1);
+  color: var(--primary);
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-right: 1rem;
+  flex-shrink: 0;
+}
+
+.benefit-content h4 {
+  font-size: 1.1rem;
+  margin-bottom: 0.3rem;
+  color: var(--dark);
+}
+
+.benefit-content p {
+  color: #666;
+  font-size: 0.95rem;
+}
+
+/* AI Priority Indicator */
+.priority-indicator {
+  background: linear-gradient(
+    135deg,
+    rgba(255, 182, 193, 0.8),
+    rgba(255, 240, 245, 0.9)
+  );
+  border-radius: 15px;
+  padding: 2rem;
+  margin-top: 3rem;
+  text-align: center;
+  border: 2px dashed #ddd;
+}
+
+.priority-indicator h3 {
+  font-size: 1.5rem;
+  margin-bottom: 1rem;
+  color: var(--dark);
+}
+
+.priority-indicator p {
+  color: #666;
+  margin-bottom: 1.5rem;
+  max-width: 700px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.priority-levels {
+  display: flex;
+  justify-content: center;
+  gap: 1rem;
+  margin-top: 2rem;
+  flex-wrap: wrap;
+}
+
+.priority-level {
+  background-color: white;
+  border-radius: 10px;
+  padding: 1.5rem;
+  width: 150px;
+  box-shadow: 0 3px 15px rgba(0, 0, 0, 0.08);
+  text-align: center;
+  transition: all 0.3s ease;
+}
+
+.priority-level:hover {
+  transform: translateY(-5px);
+}
+
+.priority-level.critical {
+  border-top: 4px solid var(--secondary);
+}
+
+.priority-level.high {
+  border-top: 4px solid var(--accent);
+}
+
+.priority-level.medium {
+  border-top: 4px solid #f59e0b;
+}
+
+.priority-level.low {
+  border-top: 4px solid var(--success);
+}
+
+.priority-level h4 {
+  font-size: 1rem;
+  margin-bottom: 0.5rem;
+  font-weight: 600;
+}
+
+.priority-level p {
+  font-size: 0.85rem;
+  color: #666;
+  margin-bottom: 0;
+}
+
+/* Patient Records */
+.patient-records {
+  margin: 3rem 0;
+  background: linear-gradient(
+    135deg,
+    rgba(255, 182, 193, 0.8),
+    rgba(255, 240, 245, 0.9)
+  );
+  border-radius: 15px;
+  padding: 2rem;
+  box-shadow: 0 5px 20px rgba(0, 0, 0, 0.05);
+}
+
+.records-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 1.5rem;
+}
+
+.action-btn {
+  background-color: var(--primary);
+  color: white;
+  border: none;
+  padding: 0.5rem 1rem;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.action-btn:hover {
+  background-color: #1d4b8f;
+}
+
+.records-table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 1rem;
+  background-color: white;
+  border-radius: 10px;
+  overflow: hidden;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+}
+
+.records-table th,
+.records-table td {
+  padding: 1rem;
+  text-align: left;
+  border-bottom: 1px solid #e5e7eb;
+}
+
+.records-table th {
+  background-color: var(--primary);
+  color: white;
+  font-weight: 600;
+}
+
+.priority-indicator-table {
+  padding: 0.3rem 0.8rem;
+  border-radius: 20px;
+  font-size: 0.85rem;
+  display: inline-block;
+  font-weight: 500;
+}
+
+.critical { background-color: #fee2e2; color: #dc2626; }
+.high { background-color: #ffedd5; color: #ea580c; }
+.medium { background-color: #fef9c3; color: #ca8a04; }
+.low { background-color: #dcfce7; color: #16a34a; }
+
+.status-indicator {
+  padding: 0.3rem 0.8rem;
+  border-radius: 20px;
+  font-size: 0.85rem;
+  background-color: #e0f2fe;
+  color: #075985;
+  font-weight: 500;
+}
+
+/* Footer */
+
+/* Animations */
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Responsive Styles */
+@media (max-width: 992px) {
+  .appointment-section {
+    grid-template-columns: 1fr;
+  }
+  
+  .container {
+    padding: 1rem;
+  }
+}
+
+@media (max-width: 768px) {
+  .logo-text h1 {
+    font-size: 1.2rem;
+  }
+
+  #desktop-nav {
+    display: none;
+  }
+
+  .mobile-menu-btn {
+    display: block;
+  }
+
+  .appointment-hero h2 {
+    font-size: 2rem;
+  }
+
+  .form-row {
+    grid-template-columns: 1fr;
+  }
+
+  .records-header {
+    flex-direction: column;
+    gap: 1rem;
+    align-items: flex-start;
+  }
+
+  .records-table {
+    display: block;
+    overflow-x: auto;
+  }
+}
+
+@media (max-width: 576px) {
+  .appointment-hero {
+    padding: 2rem 1rem;
+  }
+
+  .appointment-hero h2 {
+    font-size: 1.8rem;
+  }
+
+  .priority-levels {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .priority-level {
+    width: 100%;
+    max-width: 250px;
+  }
+
+  .container {
+    padding: 0.5rem;
+  }
+}

@@ -1,0 +1,307 @@
+:root {
+  --primary: #2a5ea7;
+  --secondary: #e63946;
+  --accent: #f4a261;
+  --dark: #1d3557;
+  --light: #f1faee;
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  font-family: 'Poppins', 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap');
+
+html, body {
+  margin: 0;
+  padding: 0;
+  width: 100%;
+  overflow-x: hidden;
+  scroll-behavior: smooth;
+}
+
+body {
+  min-height: 100vh;
+  overflow-x: hidden;
+}
+
+/* Video Background */
+.video-background {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  z-index: -1;
+  overflow: hidden;
+}
+
+.video-background video {
+  min-width: 100%;
+  min-height: 100%;
+  object-fit: cover;
+  filter: brightness(0.7);
+}
+
+/* Main Content - ADDED PADDING TO PUSH CONTENT BELOW FIXED HEADER */
+main {
+  width: 100%;
+  max-width: 100%;
+  padding: 0;
+  margin: 0;
+}
+
+
+/* About Content */
+.about-hero {
+  text-align: center;
+  padding: 4rem 2rem;
+  background: linear-gradient(135deg, var(--primary) 0%, var(--dark) 100%);
+  border-radius: 15px;
+  max-width: 1200px;
+  margin-left: auto;
+  margin-right: auto;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+}
+
+.about-hero h1 {
+  font-size: 2.5rem;
+  color: var(--light);
+  margin-bottom: 1rem;
+}
+
+.about-hero p {
+  color: #ffffff;
+  font-size: 1.1rem;
+  max-width: 600px;
+  margin: 0 auto;
+}
+
+.core-values {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 2rem;
+  max-width: 1200px;
+  margin-left: auto;
+  margin-right: auto;
+  padding: 0 2rem;
+}
+
+.value-card {
+  background: linear-gradient(135deg, #db5e5e, #f8f9fa);
+  padding: 2rem;
+  border-radius: 15px;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.05);
+  text-align: center;
+  transition: all 0.3s ease;
+}
+
+.value-card:hover {
+  transform: translateY(-5px);
+}
+
+.value-icon {
+  font-size: 2.5rem;
+  color: var(--primary);
+  margin-bottom: 1rem;
+}
+
+.timeline {
+  position: relative;
+  max-width: 1200px;
+  margin-left: auto;
+  margin-right: auto;
+  padding: 0 2rem;
+}
+
+.timeline::before {
+  display: none;
+}
+
+.timeline-item {
+  position: relative;
+  margin-bottom: 4rem;
+  width: 50%;
+  padding: 1.5rem;
+  background: linear-gradient(
+    135deg,
+    rgba(255, 182, 193, 0.8),
+    rgba(255, 240, 245, 0.9)
+  );
+  border-radius: 10px;
+  box-shadow: 0 3px 15px rgba(0, 0, 0, 0.05);
+}
+
+.timeline-item:nth-child(odd) {
+  left: 0;
+}
+
+.timeline-item:nth-child(even) {
+  left: 50%;
+}
+
+/* Footer styles moved to src/styles/Footer.css */
+
+/* Animations */
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Responsive Styles */
+@media (max-width: 768px) {
+  .timeline::before {
+    left: 20px;
+  }
+  
+  .timeline-item {
+    width: 100%;
+    left: 0 !important;
+    margin-left: 40px;
+  }
+  
+  .about-hero h1 {
+    font-size: 2rem;
+  }
+  
+  .logo-text h1 {
+    font-size: 1.2rem;
+  }
+
+  nav {
+    display: none;
+  }
+
+  .mobile-menu-btn {
+    display: block;
+  }
+}
+
+@media (max-width: 576px) {
+  .core-values {
+    grid-template-columns: 1fr;
+  }
+  
+  .team-grid {
+    grid-template-columns: 1fr;
+  }
+  
+  main {
+    padding-top: 70px; /* Slightly less padding on mobile if needed */
+  }
+}
+
+.about-hero {
+  width: 100%;
+  max-width: 1200px;
+  margin: 0 auto 2rem;
+  display: block;
+}
+
+/* Services preview on About page */
+.services-section {
+  max-width: 1200px;
+  margin: 3rem auto;
+  padding: 0 2rem;
+}
+
+.services-preview {
+  background: #ec9999;
+  padding: 2rem;
+  border-radius: 12px;
+  box-shadow: 0 6px 20px rgba(0,0,0,0.06);
+}
+
+.services-preview-header {
+  text-align: center;
+  margin-bottom: 1.5rem;
+}
+
+.services-preview-header h2 {
+  font-size: 2rem;
+  color: var(--dark);
+}
+
+.services-preview-cta {
+  text-align: center;
+  margin-top: 1.5rem;
+}
+
+.services-preview-cta .btn-primary {
+  background: var(--primary);
+  color: #fff;
+  border: none;
+  padding: 0.75rem 1.25rem;
+  border-radius: 8px;
+  cursor: pointer;
+}
+
+.services-preview-cta .btn-primary:hover {
+  opacity: 0.95;
+}
+
+/* Layout for the three-column block on About page */
+.about-three {
+  display: grid;
+  grid-template-columns: 1.2fr 1fr 1fr;
+  gap: 2rem;
+  align-items: start;
+  max-width: 1200px;
+  margin: 2.5rem auto;
+  padding: 0 2rem;
+}
+
+.about-three > .core-values {
+  /* make core-values slightly wider visually */
+  grid-column: 1 / 2;
+}
+
+.about-three > .timeline {
+  grid-column: 2 / 3;
+}
+
+.about-three > .team-column {
+  grid-column: 3 / 4;
+}
+
+@media (max-width: 992px) {
+  .about-three { grid-template-columns: 1fr; gap: 1.5rem; }
+}
+
+/* Ensure the services-preview wrapper used for TeamGrid on About page
+   has suitable spacing and fills the column nicely without affecting
+   the standalone TeamGrid used on Contact page. */
+.team-column .services-preview {
+  padding: 1.2rem;
+  border-radius: 12px;
+}
+
+.team-column .team-section { margin: 0; }
+
+/* Equalize internal spacing for each column in the three-column layout
+   so each container has the same padding/visual breathing room. */
+.about-three > .core-values,
+.about-three > .timeline,
+.about-three > .team-column {
+  padding: 1rem;
+  box-sizing: border-box;
+}
+
+/* Make sure children inside columns don't add unexpected outer margins */
+.about-three > * > * {
+  margin: 0;
+}

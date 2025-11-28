@@ -1,0 +1,182 @@
+/* Footer styles (centralized) */
+footer {
+  background-color: var(--dark);
+  color: white;
+  padding: 4rem 5% 2rem;
+}
+
+.footer-content {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 2rem;
+  margin-bottom: 2rem;
+}
+
+.footer-column h3 {
+  font-size: 1.5rem;
+  margin-bottom: 1.5rem;
+  position: relative;
+  padding-bottom: 10px;
+}
+
+.footer-column h3::after {
+  content: '';
+  position: absolute;
+  width: 50px;
+  height: 3px;
+  background-color: var(--accent);
+  bottom: 0;
+  left: 0;
+}
+
+.footer-column p {
+  margin-bottom: 1rem;
+  line-height: 1.6;
+  opacity: 0.8;
+}
+
+/* Contact rows with icons */
+.footer-column p {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+}
+
+.footer-column p i {
+  background: rgba(255,255,255,0.06);
+  width: 36px;
+  height: 36px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+  color: var(--accent);
+  flex: 0 0 36px;
+}
+
+.footer-links {
+  list-style: none;
+  padding: 0;
+}
+
+.footer-links li {
+  margin-bottom: 0.6rem;
+}
+
+/* Footer uses buttons for navigation in Footer.js */
+.footer-link-btn {
+  background: transparent;
+  border: none;
+  color: inherit;
+  font: inherit;
+  cursor: pointer;
+  padding: 0.25rem 0;
+  text-align: left;
+  display: inline-block;
+  opacity: 0.9;
+  transition: all 0.2s ease;
+}
+
+.footer-link-btn:hover {
+  color: var(--accent);
+  transform: translateX(6px);
+}
+
+.social-links {
+  display: flex;
+  gap: 1rem;
+  margin-top: 1rem;
+}
+
+.social-links a,
+.social-links .social-btn {
+  color: white;
+  background-color: rgba(255, 255, 255, 0.06);
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.18s ease;
+  border: none;
+}
+
+.social-links a:hover,
+.social-links .social-btn:hover {
+  background-color: var(--accent);
+  transform: translateY(-4px) scale(1.02);
+  color: #fff;
+}
+
+.social-links .social-btn { padding: 0; }
+
+.footer-bottom {
+  padding-top: 2rem;
+  border-top: 1px solid rgba(255, 255, 255, 0.08);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 1rem;
+  flex-wrap: wrap;
+}
+
+.footer-logo {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.footer-logo img {
+  height: 44px;
+}
+
+.footer-logo-text h3 {
+  font-size: 1.15rem;
+  color: var(--accent);
+  margin: 0;
+}
+
+.footer-logo-text p {
+  font-size: 0.75rem;
+  opacity: 0.8;
+  margin: 0;
+}
+
+.copyright {
+  opacity: 0.75;
+  font-size: 0.9rem;
+  margin-left: auto;
+}
+
+/* Dark theme variants for footer */
+[data-theme="dark"] footer {
+  background-color: var(--dark-card);
+  border-top: 1px solid var(--dark-border);
+}
+
+[data-theme="dark"] .footer-column p,
+[data-theme="dark"] .footer-links a {
+  color: var(--dark-text-secondary);
+}
+
+[data-theme="dark"] .footer-links a:hover {
+  color: var(--accent);
+}
+
+[data-theme="dark"] .social-links a {
+  background-color: rgba(255, 255, 255, 0.1);
+}
+
+[data-theme="dark"] .social-links a:hover {
+  background-color: var(--accent);
+}
+
+[data-theme="dark"] .social-links .social-btn:hover {
+  background-color: var(--accent);
+}
+
+[data-theme="dark"] .footer-bottom {
+  border-top: 1px solid var(--dark-border);
+}
+

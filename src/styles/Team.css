@@ -1,0 +1,62 @@
+/* Team section styles extracted from Contact.css for reuse */
+.team-section {
+  margin: 3rem 0;
+}
+
+.section-header {
+  text-align: center;
+  margin-bottom: 3rem;
+}
+
+.section-header h3 {
+  font-size: 2.2rem;
+  color: var(--primary);
+  margin-bottom: 0.5rem;
+}
+
+.section-header p {
+  color: #333;
+  font-size: 1.05rem;
+  max-width: 600px;
+  margin: 0 auto;
+}
+
+.team-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 1rem;
+}
+
+.team-member {
+  background: var(--accent);
+  border-radius: 15px;
+  overflow: hidden;
+  box-shadow: 0 5px 20px rgba(0, 0, 0, 0.1);
+  transition: all 0.3s ease;
+}
+
+.team-member:hover { transform: translateY(-8px); box-shadow: 0 12px 30px rgba(0,0,0,0.15); }
+
+.member-image { position: relative; overflow: hidden; height: 280px; }
+.member-image img { width:100%; height:100%; object-fit:cover; transition: transform 0.5s ease; }
+.team-member:hover .member-image img { transform: scale(1.05); }
+
+.member-overlay { position:absolute; top:0; left:0; width:100%; height:100%; background: linear-gradient(135deg, rgba(42,94,167,0.9), rgba(29,53,87,0.95)); color:#fff; display:flex; align-items:center; justify-content:center; opacity:0; transition: opacity 0.5s ease; padding:1.5rem; text-align:center; }
+.team-member:hover .member-overlay { opacity:1; }
+
+.member-info h4 { font-size:1.2rem; margin-bottom:0.6rem; color:#ff8585; font-weight:600; }
+.member-info p { margin-bottom:0.75rem; line-height:1.4; font-size:0.95rem; }
+.member-skills { display:flex; flex-wrap:wrap; gap:0.5rem; justify-content:center; margin-top:0.75rem; }
+.member-skills span { background: rgba(255,255,255,0.2); padding:0.3rem 0.8rem; border-radius:20px; font-size:0.8rem; }
+
+.member-contact { padding:1rem; background:var(--accent); border-top:3px solid var(--primary); }
+.member-contact p { margin-bottom:0.6rem; display:flex; align-items:center; color:#555; font-size:0.9rem; }
+.member-contact i { margin-right:10px; color:var(--primary); width:20px; text-align:center; }
+
+@media (max-width: 992px) {
+  .team-grid { grid-template-columns: repeat(auto-fit, minmax(300px,1fr)); }
+}
+
+@media (max-width: 768px) {
+  .team-grid { grid-template-columns: 1fr; }
+}
